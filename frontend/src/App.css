@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap');
+
+/* --- 1. CONFIGURACIÓN BASE Y COLORES (Unificado) --- */
+:root {
+  --color-fondo: #fcfcfc;
+  --color-texto: #1a1a1a;
+  --color-acento: #b5935b; /* Dorado suave */
+  --color-lineas-fuerte: #94a3b8;
+  --color-lineas-suave: #e2e8f0;
+  --color-hover: #fcf4e7; /* Crema Diana Daureo */
+  --fuente-serif: 'Playfair Display', serif;
+  --fuente-sans: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  margin: 0;
+  font-family: var(--fuente-sans);
+}
+
+/* --- 2. LANDING PAGE ESTILO BOUTIQUE --- */
+.landing-container { display: flex; min-height: 100vh; }
+.landing-info { flex: 1; padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; }
+.landing-info h1, .agenda-logo { font-family: var(--fuente-serif); }
+.landing-info h1 { font-size: 4rem; font-weight: 300; margin-bottom: 20px; letter-spacing: -1px; }
+.landing-info p { font-family: var(--fuente-sans); color: #666; max-width: 400px; line-height: 1.8; margin-bottom: 40px; }
+/*.landing-image { flex: 1; background: url('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=80&w=2000') center/cover no-repeat; }
+
+/* --- 3. INPUTS Y ELEMENTOS DE FORMULARIO --- */
+.input-minimal {
+  border: none;
+  border-bottom: 1px solid var(--color-lineas-fuerte);
+  padding: 15px 0;
+  width: 100%;
+  background: transparent;
+  outline: none;
+  font-family: var(--fuente-sans);
+  letter-spacing: 1px;
+  transition: border-color 0.3s;
+  font-size: 0.9rem;
+}
+
+.input-minimal:focus { border-color: var(--color-acento); }
+
+/* Inputs de fecha que usan botón externo: ocultar el icono nativo del selector */
+.date-with-btn { -webkit-appearance: textfield; appearance: textfield; }
+.date-with-btn::-webkit-calendar-picker-indicator { display: none; }
+.date-with-btn::-webkit-inner-spin-button { display: none; }
+.date-with-btn::-webkit-clear-button { display: none; }
+.date-with-btn::-moz-focus-inner { border: 0; }
+
+/* Botón Estilo Landing */
+.btn-boutique {
+  background: var(--color-texto);
+  color: white;
+  padding: 15px 30px;
+  border: 1px solid var(--color-texto);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-boutique:hover { background: transparent; color: var(--color-texto); }
+
+/* --- 4. MODAL --- */
+.modal-overlay { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(5px); }
+.modal-content { background: white; border: 1px solid var(--color-lineas-fuerte); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); }
+
+/* --- 5. CABECERA Y NAVEGACIÓN (HEADER) --- */
+.nav-group { display: flex; gap: 0; }
+.nav-group button { margin-right: -1px; }
+
+.btn-nav-boutique {
+  background: transparent !important;
+  border: 1px solid var(--color-lineas-fuerte) !important;
+  color: var(--color-texto) !important;
+  text-transform: uppercase !important;
+  font-size: 0.65rem !important;
+  letter-spacing: 2px !important;
+  padding: 10px 20px !important;
+  border-radius: 0 !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--fuente-sans);
+  font-weight: 600;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+
+.btn-nav-boutique:hover { background: #f8fafc !important; border-color: var(--color-texto) !important; }
+.btn-nav-boutique.active { background: var(--color-texto) !important; color: white !important; border-color: var(--color-texto) !important; }
+.btn-nav-exit { border-color: #fee2e2 !important; color: #ef4444 !important; }
+.btn-nav-exit:hover { background: #fef2f2 !important; }
+
+/* Espaciado general en la app para evitar que el contenido quede pegado a los bordes */
+.app-root { padding: 20px 28px; box-sizing: border-box; }
+.app-root main { padding-left: 8px; padding-right: 8px; }
+
+/* Separación más consistente entre botones nav y otros botones */
+.nav-group { display: flex; gap: 8px; }
+.nav-group button { margin-right: 0; }
+.btn-nav-boutique { margin-right: 8px; }
+
+/* Un poco más de espacio interno en tarjetas y secciones */
+.reports-view, .landing-info, .modal-content.boutique-modal, .card { padding: 20px !important; }
+
+/* Aumentar separación entre botones del modal y otros controles */
+.modal-actions { gap: 14px; }
+
+/* Separación horizontal y vertical para botones: evita que queden pegados en filas y columnas */
+.btn-boutique, .btn-nav-boutique, .btn-nav-exit {
+  margin: 0 8px 8px 0;
+}
+
+/* --- 6. FULLCALENDAR: ESTRUCTURA GENERAL --- */
+.fc { background: white !important; border: 1px solid var(--color-lineas-fuerte) !important; font-family: var(--fuente-sans) !important; }
+.fc-theme-standard td, .fc-theme-standard th { border: 1px solid var(--color-lineas-fuerte) !important; }
+
+/* Altura de las celdas */
+.fc-timegrid-slot { height: 4.5em !important; border-bottom: 1px solid var(--color-lineas-suave) !important; }
+
+/* Encabezados (LUN, MAR, ETC) */
+.fc-col-header-cell {
+  background: #f8fafc !important;
+  padding: 20px 0 !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-texto);
+}
+
+/* Título (Enero 2024) */
+.fc .fc-toolbar-title { font-family: var(--fuente-serif); font-weight: 400; font-style: italic; font-size: 1.8rem !important; }
+
+/* Botones internos del calendario (Mes/Sem/Dia) */
+.fc .fc-button-primary {
+  background: transparent !important;
+  border: 1px solid var(--color-lineas-fuerte) !important;
+  color: var(--color-texto) !important;
+  text-transform: uppercase !important;
+  font-size: 0.6rem !important;
+  letter-spacing: 1px !important;
+  padding: 8px 12px !important;
+  border-radius: 0 !important;
+}
+.fc .fc-button-primary:hover, .fc .fc-button-active { background: var(--color-texto) !important; color: white !important; }
+
+/* ==========================================================================
+   7. LÓGICA DE HOVER (EFECTO EXCEL) - SOLUCIÓN FINAL
+   ========================================================================== */
+
+/* A) VISTA MES: El cuadrado del día cambia de color */
+.fc-dayGridMonth-view .fc-daygrid-day:hover {
+  background-color: var(--color-hover) !important;
+  box-shadow: inset 0 0 0 2px var(--color-acento) !important; /* Marco interior dorado */
+  cursor: pointer;
+  z-index: 5;
+}
+
+/* B) VISTA DÍA: La franja horaria cambia de color (aquí sí funciona la fila entera) */
+.fc-timeGridDay-view .fc-timegrid-slot:hover {
+  background-color: var(--color-hover) !important;
+  cursor: pointer;
+  border-left: 3px solid var(--color-acento) !important; /* Indicador visual extra */
+}
+
+/* C) VISTA SEMANA: EL ARREGLO PARA QUE NO PINTE TODA LA FILA */
+/* Paso 1: Evitar que el fondo se ponga crema en toda la fila larga */
+.fc-timeGridWeek-view .fc-timegrid-slot:hover {
+  background-color: transparent !important; 
+}
+
+/* Paso 2: Usar un pseudo-elemento para iluminar SOLO la línea de tiempo (Horizontal) */
+.fc-timeGridWeek-view .fc-timegrid-slot:hover::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  border-bottom: 2px dashed var(--color-acento); /* Línea guía discontinua */
+  pointer-events: none;
+}
+
+/* Paso 3: Iluminar la COLUMNA del día (Vertical) */
+.fc-timeGridWeek-view .fc-timegrid-col:hover {
+  background-color: rgba(252, 244, 231, 0.4) !important; /* Crema muy suave vertical */
+  cursor: pointer;
+}
+
+/* D) REFLEJO EN LA HORA (Izquierda) */
+.fc-timegrid-slot-label:hover {
+  color: var(--color-acento);
+  font-weight: bold;
+  background-color: #fafafa;
+}
+
+/* --- MODAL BOUTIQUE --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Fondo oscurecido sutil */
+  backdrop-filter: blur(4px); /* Efecto cristalino */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content.boutique-modal {
+  background: white;
+  padding: 40px;
+  width: 400px;
+  border: 1px solid var(--color-acento);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: var(--color-texto);
+  text-align: center;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modal-actions button {
+  flex: 1;
+}

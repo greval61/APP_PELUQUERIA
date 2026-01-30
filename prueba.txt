@@ -1,0 +1,12 @@
+_______________________
+
+  **********
+  27/01/2026
+  **********
+  - 11:11 horas
+Entregado el 28.1.2026
+_______________________
+
+Trabajando: 29.1.1
+Comprobar que salga la foto inicial.
+Añadir un botón de abrir, en el resumen de facturación.

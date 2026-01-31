@@ -1,0 +1,16 @@
+# Node
+node_modules/
+
+# SQLite
+*.sqlite
+*.sqlite-journal
+
+# Logs
+*.log
+
+# Build
+build/
+dist/
+
+# Env
+.env
